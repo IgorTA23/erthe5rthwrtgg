@@ -1,0 +1,160 @@
+const METABOLITES = {
+  // Glycolysis
+  "glucose": { class: "carbohydrate", pathways: ["glycolysis"], tags: ["energy", "glycolysis"] },
+  "glucose-6-phosphate": { class: "carbohydrate", pathways: ["glycolysis", "ppp"], tags: ["intermediate", "glycolysis"] },
+  "fructose-6-phosphate": { class: "carbohydrate", pathways: ["glycolysis"], tags: ["intermediate", "glycolysis"] },
+  "fructose-1,6-bisphosphate": { class: "carbohydrate", pathways: ["glycolysis"], tags: ["intermediate", "glycolysis"] },
+  "glyceraldehyde-3-phosphate": { class: "carbohydrate", pathways: ["glycolysis"], tags: ["intermediate", "glycolysis"] },
+  "dihydroxyacetone phosphate": { class: "carbohydrate", pathways: ["glycolysis"], tags: ["intermediate", "glycolysis"] },
+  "3-phosphoglycerate": { class: "carbohydrate", pathways: ["glycolysis"], tags: ["intermediate", "glycolysis"] },
+  "2-phosphoglycerate": { class: "carbohydrate", pathways: ["glycolysis"], tags: ["intermediate", "glycolysis"] },
+  "phosphoenolpyruvate": { class: "carbohydrate", pathways: ["glycolysis"], tags: ["intermediate", "glycolysis"] },
+  "pyruvate": { class: "carbohydrate", pathways: ["glycolysis", "tca_cycle"], tags: ["energy", "glycolysis"] },
+  "lactate": { class: "carbohydrate", pathways: ["glycolysis"], tags: ["anaerobic", "glycolysis", "hypoxia"] },
+
+  // TCA cycle
+  "citrate": { class: "carbohydrate", pathways: ["tca_cycle"], tags: ["mitochondria", "tca"] },
+  "isocitrate": { class: "carbohydrate", pathways: ["tca_cycle"], tags: ["mitochondria", "tca"] },
+  "alpha-ketoglutarate": { class: "carbohydrate", pathways: ["tca_cycle"], tags: ["mitochondria", "tca"] },
+  "succinyl-coa": { class: "carbohydrate", pathways: ["tca_cycle"], tags: ["mitochondria", "tca"] },
+  "succinate": { class: "carbohydrate", pathways: ["tca_cycle"], tags: ["mitochondria", "tca"] },
+  "fumarate": { class: "carbohydrate", pathways: ["tca_cycle"], tags: ["mitochondria", "tca"] },
+  "malate": { class: "carbohydrate", pathways: ["tca_cycle"], tags: ["mitochondria", "tca"] },
+  "oxaloacetate": { class: "carbohydrate", pathways: ["tca_cycle"], tags: ["mitochondria", "tca"] },
+  "acetyl-coa": { class: "lipid", pathways: ["tca_cycle", "fatty_acid_oxidation"], tags: ["central", "tca"] },
+
+  // PPP
+  "ribose-5-phosphate": { class: "carbohydrate", pathways: ["ppp"], tags: ["nucleotide", "ppp"] },
+  "xylulose-5-phosphate": { class: "carbohydrate", pathways: ["ppp"], tags: ["ppp"] },
+  "sedoheptulose-7-phosphate": { class: "carbohydrate", pathways: ["ppp"], tags: ["ppp"] },
+  "erythrose-4-phosphate": { class: "carbohydrate", pathways: ["ppp"], tags: ["ppp"] },
+  "6-phosphogluconate": { class: "carbohydrate", pathways: ["ppp"], tags: ["ppp"] },
+
+  // Fatty acid oxidation / lipids
+  "carnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "acetylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "propionylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "butyrylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "hexanoylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "octanoylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "decanoylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "lauroylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "myristoylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "palmitoylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "stearoylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+  "oleoylcarnitine": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["transport", "carnitine"] },
+
+  // Fatty acids
+  "palmitate": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["fatty_acid"] },
+  "oleate": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["fatty_acid", "mufa"] },
+  "stearate": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["fatty_acid"] },
+  "linoleate": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["fatty_acid", "pufa"] },
+  "arachidonate": { class: "lipid", pathways: ["fatty_acid_oxidation", "eicosanoid"], tags: ["fatty_acid", "pufa", "inflammatory"] },
+  "eicosapentaenoate": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["fatty_acid", "pufa", "omega3"] },
+  "docosahexaenoate": { class: "lipid", pathways: ["fatty_acid_oxidation"], tags: ["fatty_acid", "pufa", "omega3"] },
+  "butyrate": { class: "lipid", pathways: ["scfa_metabolism"], tags: ["scfa", "microbial"] },
+  "propionate": { class: "lipid", pathways: ["scfa_metabolism"], tags: ["scfa", "microbial"] },
+  "acetate": { class: "lipid", pathways: ["scfa_metabolism"], tags: ["scfa"] },
+
+  // Ketone bodies
+  "beta-hydroxybutyrate": { class: "lipid", pathways: ["ketogenesis"], tags: ["ketone"] },
+  "acetoacetate": { class: "lipid", pathways: ["ketogenesis"], tags: ["ketone"] },
+  "acetone": { class: "lipid", pathways: ["ketogenesis"], tags: ["ketone"] },
+
+  // Phospholipids / sphingolipids
+  "cholesterol": { class: "lipid", pathways: ["sterol_metabolism"], tags: ["lipid", "sterol"] },
+  "phosphatidylcholine": { class: "lipid", pathways: ["phospholipid"], tags: ["membrane", "phospholipid"] },
+  "phosphatidylethanolamine": { class: "lipid", pathways: ["phospholipid"], tags: ["membrane", "phospholipid"] },
+  "phosphatidylserine": { class: "lipid", pathways: ["phospholipid"], tags: ["membrane", "phospholipid"] },
+  "sphingomyelin": { class: "lipid", pathways: ["sphingolipid"], tags: ["membrane", "sphingolipid"] },
+  "ceramide": { class: "lipid", pathways: ["sphingolipid"], tags: ["sphingolipid", "apoptosis"] },
+  "sphingosine": { class: "lipid", pathways: ["sphingolipid"], tags: ["sphingolipid"] },
+  "sphingosine-1-phosphate": { class: "lipid", pathways: ["sphingolipid"], tags: ["sphingolipid", "signaling"] },
+
+  // Bile acids
+  "cholic acid": { class: "lipid", pathways: ["bile_acid"], tags: ["bile", "liver"] },
+  "chenodeoxycholic acid": { class: "lipid", pathways: ["bile_acid"], tags: ["bile", "liver"] },
+  "deoxycholic acid": { class: "lipid", pathways: ["bile_acid"], tags: ["bile", "microbial"] },
+  "lithocholic acid": { class: "lipid", pathways: ["bile_acid"], tags: ["bile", "microbial"] },
+  "ursodeoxycholic acid": { class: "lipid", pathways: ["bile_acid"], tags: ["bile"] },
+  "taurocholic acid": { class: "lipid", pathways: ["bile_acid"], tags: ["bile", "conjugated"] },
+  "glycocholic acid": { class: "lipid", pathways: ["bile_acid"], tags: ["bile", "conjugated"] },
+
+  // Standard amino acids
+  "alanine": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa"] },
+  "arginine": { class: "amino_acid", pathways: ["urea_cycle"], tags: ["aa", "urea"] },
+  "asparagine": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa"] },
+  "aspartate": { class: "amino_acid", pathways: ["amino_acid_metabolism", "urea_cycle"], tags: ["aa"] },
+  "cysteine": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa", "sulfur"] },
+  "glutamate": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa", "neurotransmitter"] },
+  "glutamine": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa", "anaplerotic"] },
+  "glycine": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa", "one_carbon"] },
+  "histidine": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa"] },
+  "leucine": { class: "amino_acid", pathways: ["bcaa_metabolism"], tags: ["bcaa", "aa"] },
+  "isoleucine": { class: "amino_acid", pathways: ["bcaa_metabolism"], tags: ["bcaa", "aa"] },
+  "valine": { class: "amino_acid", pathways: ["bcaa_metabolism"], tags: ["bcaa", "aa"] },
+  "lysine": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa"] },
+  "methionine": { class: "amino_acid", pathways: ["amino_acid_metabolism", "one_carbon"], tags: ["aa", "sulfur", "one_carbon"] },
+  "phenylalanine": { class: "amino_acid", pathways: ["aromatic_aa"], tags: ["aa", "aromatic"] },
+  "proline": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa"] },
+  "serine": { class: "amino_acid", pathways: ["amino_acid_metabolism", "one_carbon"], tags: ["aa", "one_carbon"] },
+  "threonine": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["aa"] },
+  "tryptophan": { class: "amino_acid", pathways: ["aromatic_aa", "kynurenine"], tags: ["aa", "aromatic", "neurotransmitter"] },
+  "tyrosine": { class: "amino_acid", pathways: ["aromatic_aa"], tags: ["aa", "aromatic"] },
+
+  // AA derivatives / neurotransmitters
+  "homocysteine": { class: "amino_acid", pathways: ["one_carbon"], tags: ["sulfur", "one_carbon"] },
+  "taurine": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["sulfur"] },
+  "creatine": { class: "amino_acid", pathways: ["energy_metabolism"], tags: ["energy"] },
+  "creatinine": { class: "amino_acid", pathways: ["energy_metabolism"], tags: ["energy", "waste"] },
+  "serotonin": { class: "amino_acid", pathways: ["kynurenine"], tags: ["neurotransmitter"] },
+  "dopamine": { class: "amino_acid", pathways: ["aromatic_aa"], tags: ["neurotransmitter"] },
+  "gaba": { class: "amino_acid", pathways: ["amino_acid_metabolism"], tags: ["neurotransmitter"] },
+  "ornithine": { class: "amino_acid", pathways: ["urea_cycle"], tags: ["urea", "aa"] },
+  "citrulline": { class: "amino_acid", pathways: ["urea_cycle"], tags: ["urea", "aa"] },
+
+  // Nucleotides / energy
+  "atp": { class: "nucleotide", pathways: ["energy_metabolism"], tags: ["energy", "purine"] },
+  "adp": { class: "nucleotide", pathways: ["energy_metabolism"], tags: ["energy", "purine"] },
+  "amp": { class: "nucleotide", pathways: ["energy_metabolism"], tags: ["energy", "purine"] },
+  "gtp": { class: "nucleotide", pathways: ["energy_metabolism"], tags: ["energy", "purine"] },
+  "uridine": { class: "nucleotide", pathways: ["pyrimidine"], tags: ["pyrimidine"] },
+  "inosine": { class: "nucleotide", pathways: ["purine"], tags: ["purine"] },
+  "hypoxanthine": { class: "nucleotide", pathways: ["purine"], tags: ["purine"] },
+  "xanthine": { class: "nucleotide", pathways: ["purine"], tags: ["purine"] },
+  "uric acid": { class: "nucleotide", pathways: ["purine"], tags: ["purine", "waste"] },
+  "allantoin": { class: "nucleotide", pathways: ["purine"], tags: ["purine", "oxidative_stress"] },
+
+  // Cofactors / redox
+  "nad+": { class: "cofactor", pathways: ["redox"], tags: ["redox", "nad"] },
+  "nadh": { class: "cofactor", pathways: ["redox"], tags: ["redox", "nad"] },
+  "nadp+": { class: "cofactor", pathways: ["redox"], tags: ["redox"] },
+  "nadph": { class: "cofactor", pathways: ["redox"], tags: ["redox"] },
+  "fad": { class: "cofactor", pathways: ["redox"], tags: ["redox"] },
+  "fadh2": { class: "cofactor", pathways: ["redox"], tags: ["redox"] },
+  "coenzyme q10": { class: "cofactor", pathways: ["etc"], tags: ["mitochondria", "redox"] },
+  "glutathione": { class: "cofactor", pathways: ["redox"], tags: ["redox", "antioxidant"] },
+  "glutathione disulfide": { class: "cofactor", pathways: ["redox"], tags: ["redox", "oxidative_stress"] },
+
+  // Microbial metabolites
+  "trimethylamine": { class: "microbial", pathways: ["microbial"], tags: ["microbial", "gut"] },
+  "trimethylamine n-oxide": { class: "microbial", pathways: ["microbial"], tags: ["microbial", "cardiovascular"] },
+  "indole": { class: "microbial", pathways: ["microbial", "kynurenine"], tags: ["microbial", "gut"] },
+  "indoxyl sulfate": { class: "microbial", pathways: ["microbial"], tags: ["microbial", "uremic"] },
+  "p-cresol sulfate": { class: "microbial", pathways: ["microbial"], tags: ["microbial", "uremic"] },
+  "phenylacetylglutamine": { class: "microbial", pathways: ["microbial"], tags: ["microbial", "cardiovascular"] },
+  "hippurate": { class: "microbial", pathways: ["microbial"], tags: ["microbial", "gut"] },
+
+  // Vitamins / misc
+  "alpha-tocopherol": { class: "vitamin", pathways: ["antioxidant"], tags: ["antioxidant", "vitamin"] },
+  "ascorbate": { class: "vitamin", pathways: ["antioxidant"], tags: ["antioxidant", "vitamin"] },
+  "retinol": { class: "vitamin", pathways: ["vitamin_metabolism"], tags: ["vitamin"] },
+  "25-hydroxyvitamin d": { class: "vitamin", pathways: ["vitamin_metabolism"], tags: ["vitamin"] },
+  "thiamine": { class: "vitamin", pathways: ["vitamin_metabolism"], tags: ["vitamin", "energy"] },
+  "riboflavin": { class: "vitamin", pathways: ["vitamin_metabolism"], tags: ["vitamin", "redox"] },
+  "pyridoxine": { class: "vitamin", pathways: ["vitamin_metabolism"], tags: ["vitamin"] },
+  "folate": { class: "vitamin", pathways: ["one_carbon"], tags: ["vitamin", "one_carbon"] },
+  "cobalamin": { class: "vitamin", pathways: ["one_carbon"], tags: ["vitamin", "one_carbon"] },
+};
+
+export default METABOLITES;
