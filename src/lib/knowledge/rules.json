@@ -1,0 +1,310 @@
+[
+  {
+    "name": "Warburg Effect / Aerobic Glycolysis",
+    "conditions": [
+      { "tag": "glycolysis", "direction": "up", "min": 2 },
+      { "tag": "anaerobic", "direction": "up", "min": 1 },
+      { "tag": "tca", "direction": "down", "min": 1 }
+    ],
+    "message": "Shift toward aerobic glycolysis with TCA suppression — hallmark of cancer metabolism or hypoxia",
+    "weight": 0.95
+  },
+  {
+    "name": "Glycolytic Shift",
+    "conditions": [
+      { "tag": "glycolysis", "direction": "up", "min": 2 },
+      { "tag": "tca", "direction": "down", "min": 1 }
+    ],
+    "message": "Increased glycolytic flux with reduced TCA cycle activity",
+    "weight": 0.85
+  },
+  {
+    "name": "Mitochondrial Dysfunction",
+    "conditions": [
+      { "tag": "tca", "direction": "down", "min": 2 },
+      { "tag": "energy", "direction": "down", "min": 1 },
+      { "tag": "anaerobic", "direction": "up", "min": 1 }
+    ],
+    "message": "Impaired mitochondrial function with compensatory anaerobic energy production",
+    "weight": 0.90
+  },
+  {
+    "name": "Reduced Lipid Oxidation",
+    "conditions": [
+      { "tag": "carnitine", "direction": "down", "min": 1 },
+      { "pathway": "fatty_acid_oxidation", "direction": "down", "min": 1 }
+    ],
+    "message": "Reduced fatty acid oxidation capacity — impaired beta-oxidation or carnitine shuttle",
+    "weight": 0.85
+  },
+  {
+    "name": "BCAA Overflow",
+    "conditions": [
+      { "tag": "bcaa", "direction": "up", "min": 2 },
+      { "pathway": "bcaa_metabolism", "direction": "up", "min": 1 }
+    ],
+    "message": "Branched-chain amino acid accumulation — associated with insulin resistance and metabolic syndrome",
+    "weight": 0.85
+  },
+  {
+    "name": "Active Ketogenesis",
+    "conditions": [
+      { "tag": "ketone", "direction": "up", "min": 1 },
+      { "tag": "carnitine", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated ketone bodies with carnitine activation — consistent with fasting, ketogenic diet, or diabetic ketosis",
+    "weight": 0.88
+  },
+  {
+    "name": "Oxidative Stress",
+    "conditions": [
+      { "tag": "oxidative_stress", "direction": "up", "min": 1 },
+      { "tag": "antioxidant", "direction": "down", "min": 1 }
+    ],
+    "message": "Depleted antioxidant capacity with elevated oxidative damage markers",
+    "weight": 0.90
+  },
+  {
+    "name": "Glutamine Addiction",
+    "conditions": [
+      { "tag": "anaplerotic", "direction": "up", "min": 1 },
+      { "pathway": "glutamine_metabolism", "direction": "up", "min": 1 },
+      { "tag": "tca", "direction": "up", "min": 1 }
+    ],
+    "message": "Active glutaminolysis feeding TCA cycle — common in rapidly proliferating cells",
+    "weight": 0.80
+  },
+  {
+    "name": "Lipid Accumulation / Lipotoxicity",
+    "conditions": [
+      { "tag": "sphingolipid", "direction": "up", "min": 1 },
+      { "tag": "lipid", "direction": "up", "min": 2 }
+    ],
+    "message": "Elevated lipid species including sphingolipids — potential lipotoxic stress",
+    "weight": 0.80
+  },
+  {
+    "name": "Inflammatory Signaling",
+    "conditions": [
+      { "tag": "inflammatory", "direction": "up", "min": 1 },
+      { "tag": "eicosanoid", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated inflammatory lipid mediators and inflammatory metabolite signatures",
+    "weight": 0.80
+  },
+  {
+    "name": "Gut Dysbiosis",
+    "conditions": [
+      { "tag": "uremic", "direction": "up", "min": 1 },
+      { "tag": "microbial", "direction": "up", "min": 1 },
+      { "tag": "scfa", "direction": "down", "min": 1 }
+    ],
+    "message": "Elevated uremic toxins with reduced beneficial SCFAs — consistent with gut dysbiosis",
+    "weight": 0.88
+  },
+  {
+    "name": "Impaired Methylation",
+    "conditions": [
+      { "tag": "methylation", "direction": "down", "min": 1 },
+      { "metabolite": "homocysteine", "direction": "up" }
+    ],
+    "message": "Elevated homocysteine with reduced methylation metabolites — impaired methionine cycle",
+    "weight": 0.85
+  },
+  {
+    "name": "Energy Crisis",
+    "conditions": [
+      { "tag": "energy", "direction": "down", "min": 2 },
+      { "metabolite": "atp", "direction": "down" }
+    ],
+    "message": "Reduced ATP and energy metabolites — cellular energy crisis",
+    "weight": 0.92
+  },
+  {
+    "name": "Urea Cycle Activation",
+    "conditions": [
+      { "tag": "urea", "direction": "up", "min": 2 },
+      { "pathway": "urea_cycle", "direction": "up", "min": 1 }
+    ],
+    "message": "Active urea cycle — elevated nitrogen disposal from increased protein catabolism",
+    "weight": 0.82
+  },
+  {
+    "name": "Kynurenine Pathway Activation",
+    "conditions": [
+      { "tag": "kynurenine", "direction": "up", "min": 1 },
+      { "metabolite": "kynurenine", "direction": "up" }
+    ],
+    "message": "Activated tryptophan to kynurenine pathway — associated with inflammation and immune activation",
+    "weight": 0.85
+  },
+  {
+    "name": "Hepatic Stress / Bile Dysregulation",
+    "conditions": [
+      { "tag": "bile", "direction": "up", "min": 2 },
+      { "pathway": "bile_acid_metabolism", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated bile acid pool — consistent with hepatic stress or cholestasis",
+    "weight": 0.82
+  },
+  {
+    "name": "Fasting / Catabolic State",
+    "conditions": [
+      { "tag": "ketone", "direction": "up", "min": 1 },
+      { "tag": "aa", "direction": "up", "min": 2 },
+      { "tag": "glycolysis", "direction": "down", "min": 1 }
+    ],
+    "message": "Ketone body production with amino acid mobilization — consistent with fasting or catabolic state",
+    "weight": 0.85
+  },
+  {
+    "name": "Impaired FAO / Carnitine Deficiency",
+    "conditions": [
+      { "metabolite": "carnitine", "direction": "down" },
+      { "tag": "carnitine", "direction": "down", "min": 2 }
+    ],
+    "message": "Low carnitine and acylcarnitines — impaired mitochondrial fatty acid transport",
+    "weight": 0.88
+  },
+  {
+    "name": "Nucleotide Biosynthesis Upregulation",
+    "conditions": [
+      { "tag": "purine", "direction": "up", "min": 2 },
+      { "tag": "ppp", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated purine metabolism with active PPP — consistent with rapid cell proliferation",
+    "weight": 0.78
+  },
+  {
+    "name": "Catecholamine Dysregulation",
+    "conditions": [
+      { "tag": "catecholamine", "direction": "up", "min": 1 },
+      { "pathway": "tyrosine_catecholamine", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated catecholamine biosynthesis — sympathetic activation or adrenal stress",
+    "weight": 0.80
+  },
+  {
+    "name": "Redox Imbalance",
+    "conditions": [
+      { "tag": "redox", "direction": "down", "min": 1 },
+      { "metabolite": "glutathione", "direction": "down" }
+    ],
+    "message": "Depleted glutathione with redox cofactor reduction — oxidative stress state",
+    "weight": 0.88
+  },
+  {
+    "name": "Insulin Resistance Signature",
+    "conditions": [
+      { "tag": "bcaa", "direction": "up", "min": 2 },
+      { "tag": "glycolysis", "direction": "up", "min": 1 },
+      { "tag": "carnitine", "direction": "down", "min": 1 }
+    ],
+    "message": "BCAA elevation with glycolytic activation and reduced FAO — classic insulin resistance pattern",
+    "weight": 0.88
+  },
+  {
+    "name": "Membrane Remodeling",
+    "conditions": [
+      { "tag": "membrane", "direction": "up", "min": 2 },
+      { "pathway": "phospholipid_metabolism", "direction": "up", "min": 1 }
+    ],
+    "message": "Active phospholipid and membrane lipid remodeling",
+    "weight": 0.75
+  },
+  {
+    "name": "Active SCFA Production",
+    "conditions": [
+      { "tag": "scfa", "direction": "up", "min": 2 },
+      { "tag": "microbial", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated short-chain fatty acids — active gut microbiome fermentation",
+    "weight": 0.78
+  },
+  {
+    "name": "Purine Catabolism / Gout Risk",
+    "conditions": [
+      { "metabolite": "uric-acid", "direction": "up" },
+      { "tag": "purine", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated uric acid with purine catabolites — gout risk or high nucleotide turnover",
+    "weight": 0.85
+  },
+  {
+    "name": "Reduced Long-Chain Fatty Acid Oxidation",
+    "conditions": [
+      { "tag": "long_chain_fa", "direction": "down", "min": 2 },
+      { "tag": "carnitine", "direction": "down", "min": 1 }
+    ],
+    "message": "Multiple long-chain acylcarnitines/FAs decreased — impaired LCFA beta-oxidation or carnitine transport deficiency",
+    "weight": 0.88
+  },
+  {
+    "name": "Long-Chain FA Accumulation",
+    "conditions": [
+      { "tag": "long_chain_fa", "direction": "up", "min": 2 },
+      { "tag": "carnitine", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated long-chain acylcarnitines — incomplete beta-oxidation, mitochondrial overload, or lipotoxicity",
+    "weight": 0.85
+  },
+  {
+    "name": "Medium-Chain Acylcarnitine Accumulation",
+    "conditions": [
+      { "tag": "medium_chain_fa", "direction": "up", "min": 2 }
+    ],
+    "message": "Elevated medium-chain acylcarnitines — consistent with MCAD deficiency or incomplete FAO",
+    "weight": 0.82
+  },
+  {
+    "name": "Hydroxylated FA Accumulation",
+    "conditions": [
+      { "tag": "hydroxy_fa", "direction": "up", "min": 2 }
+    ],
+    "message": "Elevated hydroxy-fatty acid species — impaired peroxisomal omega-oxidation or mitochondrial dysfunction",
+    "weight": 0.80
+  },
+  {
+    "name": "PUFA Depletion",
+    "conditions": [
+      { "tag": "pufa", "direction": "down", "min": 2 }
+    ],
+    "message": "Reduced polyunsaturated fatty acids — possible nutritional deficiency, excess lipid peroxidation, or impaired elongation",
+    "weight": 0.78
+  },
+  {
+    "name": "Elevated Ceramide / Sphingolipid Stress",
+    "conditions": [
+      { "tag": "ceramide", "direction": "up", "min": 1 },
+      { "tag": "sphingolipid", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated ceramide species — associated with apoptosis, insulin resistance, and inflammatory sphingolipid signaling",
+    "weight": 0.85
+  },
+  {
+    "name": "Phospholipid Membrane Remodeling",
+    "conditions": [
+      { "tag": "phospholipid", "direction": "up", "min": 2 },
+      { "tag": "lyso", "direction": "up", "min": 1 }
+    ],
+    "message": "Elevated phospholipids with lysophospholipids — active membrane remodeling or phospholipase activation",
+    "weight": 0.78
+  },
+  {
+    "name": "Omega-3 FA Depletion",
+    "conditions": [
+      { "tag": "omega3", "direction": "down", "min": 1 }
+    ],
+    "message": "Reduced omega-3 fatty acids — pro-inflammatory shift, reduced specialized pro-resolving mediator production",
+    "weight": 0.75
+  },
+  {
+    "name": "Pro-inflammatory Eicosanoid Elevation",
+    "conditions": [
+      { "tag": "eicosanoid", "direction": "up", "min": 2 },
+      { "tag": "inflammatory", "direction": "up", "min": 1 }
+    ],
+    "message": "Multiple eicosanoid species elevated — active arachidonic acid cascade and pro-inflammatory signaling",
+    "weight": 0.85
+  }
+]
